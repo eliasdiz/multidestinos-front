@@ -55,13 +55,14 @@ export default function CircularWithValueLabel() {
     
     const navigate = useNavigate()
     const [progress, setProgress] = React.useState(1);
+    
     const autExitoso = () => {
         socket.on('autenticado', ({state}) => {
             console.log(state)
             state && setProgress(100)
         })
         setTimeout(() => {
-            navigate('/inicio')
+            navigate('/dashboard')
         }, 2000);
     }
 
