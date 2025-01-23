@@ -1,8 +1,7 @@
 import { List, ListItemButton, ListItemIcon, Typography } from '@mui/material'
 import React from 'react'
 import { Building, CalendarDots, CurrencyCircleDollar, Images, Scroll, TreeStructure } from '@phosphor-icons/react';
-
-
+import StatusWhatsapp from './StatusWhatsapp';
 
 
 
@@ -49,6 +48,9 @@ export default function Layout() {
 
                 { renderMenuItems(linkList) }
 
+                <ListItemIcon className='flex justify-center'>
+                    <StatusWhatsapp />
+                </ListItemIcon>
 
             </List>
 
