@@ -47,7 +47,7 @@ export default function Login() {
     )
 
     return (
-        <div className='h-[100vh] flex flex-col justify-center items-center'>
+        <div className='flex justify-center items-center bg-[#2A4364] '>
 
             { step === 0 &&(
                 <WhatsappLogo 

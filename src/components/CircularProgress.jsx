@@ -59,20 +59,13 @@ export default function CircularWithValueLabel() {
     const autExitoso = () => {
         socket.on('autenticado', ({state}) => {
             console.log(state)
-            state && setProgress(100)
+            state && setProgress(100) 
+            setTimeout(() => {
+                navigate('/dashboard')
+            }, 500);
         })
-        setTimeout(() => {
-            navigate('/dashboard')
-        }, 2000);
     }
 
-
-    React.useEffect(
-        () => {
-            autExitoso()
-        },
-        []
-    )
 
     React.useEffect(() => {
         autExitoso()
