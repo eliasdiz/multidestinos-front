@@ -11,7 +11,7 @@ export default function Layout() {
     const linkList = [
         { icon: TreeStructure , name: 'flujo del 🤖' },
         { icon: Scroll , name: 'descripcion', ruta: '/descripcion' },
-        { icon: Building , name: 'hospedaje' },
+        { icon: Building , name: 'hospedaje',ruta: '/hospedaje' },
         { icon: CalendarDots , name: 'fechas' },
         { icon: CurrencyCircleDollar , name: 'costos' },
         { icon: Images , name: 'fotos' },
