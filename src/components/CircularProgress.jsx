@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const socket = io('http://localhost:8080')
+// const socket = io('http://localhost:8080')
 
 
 function CircularProgressWithLabel(props) {
@@ -67,15 +67,15 @@ export default function CircularWithValueLabel() {
     }
 
 
-    React.useEffect(() => {
-        autExitoso()
-        const timer = setInterval(() => {
-        setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
-        }, 800);
-        return () => {
-        clearInterval(timer);
-        };
-    }, []);
+    // React.useEffect(() => {
+    //     autExitoso()
+    //     const timer = setInterval(() => {
+    //     setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
+    //     }, 800);
+    //     return () => {
+    //     clearInterval(timer);
+    //     };
+    // }, []);
 
     return <CircularProgressWithLabel value={progress} />;
 }
