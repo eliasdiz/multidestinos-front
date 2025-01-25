@@ -5,10 +5,12 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { io } from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
+import autWhatsappActions from '../Store/auth/action.js'
+import { useDispatch } from 'react-redux';
 
 
-
-// const socket = io('http://localhost:8080')
+const { autSesion } = autWhatsappActions
+const socket = io('http://localhost:8080')
 
 
 function CircularProgressWithLabel(props) {
@@ -33,7 +35,7 @@ return (
         <Typography
         variant="caption"
         component="div"
-        sx={{ color: 'text.secondary' }}
+        sx={{ color: 'white' }}
         >
         {`${Math.round(props.value)}%`}
         </Typography>
@@ -53,29 +55,32 @@ value: PropTypes.number.isRequired,
 
 export default function CircularWithValueLabel() {
     
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [progress, setProgress] = React.useState(1);
     
     const autExitoso = () => {
         socket.on('autenticado', ({state}) => {
-            console.log(state)
+            // console.log(state)
             state && setProgress(100) 
             setTimeout(() => {
+                dispatch(autSesion())
                 navigate('/dashboard')
             }, 500);
         })
+        // socket.off('autenticado')
     }
 
 
-    // React.useEffect(() => {
-    //     autExitoso()
-    //     const timer = setInterval(() => {
-    //     setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
-    //     }, 800);
-    //     return () => {
-    //     clearInterval(timer);
-    //     };
-    // }, []);
+    React.useEffect(() => {
+        autExitoso()
+        const timer = setInterval(() => {
+        setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
+        }, 600);
+        return () => {
+        clearInterval(timer);
+        };
+    }, []);
 
     return <CircularProgressWithLabel value={progress} />;
 }

@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
-// import { io } from 'socket.io-client'
+import { useDispatch, useSelector } from 'react-redux'
+import autWhatsActions from '../Store/auth/action.js'
 
 
+const {autSesion} = autWhatsActions
 
 
 export default function StatusWhatsapp() {
     
-    // const socket = io('http://localhost:8080')
+    const dispatch = useDispatch()
     const [ onLine, setOnLine ] = useState(false)
     const [ offLine, setOffLine ] = useState(false)
+    const status = useSelector(store => store.autWhatsapp.status)
+    // console.log(status)
 
     const setColor = () => {
         if(onLine){
@@ -32,12 +36,15 @@ export default function StatusWhatsapp() {
             return 'esperando...'
         }
     }
+
     
 
     useEffect(
         () => {
+            dispatch(autSesion())
+            status ? setOnLine(true) : setOffLine(true)
         },
-        []
+        [status]
     )
     
     return (
@@ -48,7 +55,7 @@ export default function StatusWhatsapp() {
                     animate={{ opacity: [1, 0.4, 1] }} 
                     transition={{ duration: 3, repeat: Infinity }} 
                 />
-                <Typography color="white" className="capitalize" fontSize={16}>
+                <Typography color="white" className="capitalize" fontSize={20} >
                     {setEstado()}
                 </Typography>
             </div>

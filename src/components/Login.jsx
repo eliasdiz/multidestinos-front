@@ -7,7 +7,7 @@ import { Skeleton, } from '@mui/material'
 import CircularProgress from '../components/CircularProgress' 
 
 
-// const socket = io('http://localhost:8080')
+const socket = io('http://localhost:8080')
 
 
 export default function Login() {
@@ -21,7 +21,7 @@ export default function Login() {
     const handleClick = () => {
         setStep(1)
         socket.emit('generateQr')
-        // socket.off('generateQr')
+        socket.off('generateQr')
     }
     
     const generarQr = () => {
@@ -32,19 +32,20 @@ export default function Login() {
         })
     }
 
-    const autenticando = () => socket.on('autenticando', ({state}) => {
+    const autenticando = () => 
+        socket.on('autenticando', ({state}) => {
         setStep(3)
         setReady(state)
     })
 
 
-    // useEffect(
-    //     () => {
-    //         generarQr()
-    //         autenticando()
-    //     },
-    //     []
-    // )
+    useEffect(
+        () => {
+            generarQr()
+            autenticando()
+        },
+        []
+    )
 
     return (
         <div className='w-full flex justify-center items-center bg-[#2A4364] '>
@@ -52,7 +53,7 @@ export default function Login() {
             { step === 0 &&(
                 <WhatsappLogo 
                     className= 'cursor-pointer'
-                    size={40} 
+                    size={50} 
                     color='green' 
                     weight='duotone'  
                     onClick={handleClick}
