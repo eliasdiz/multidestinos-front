@@ -1,6 +1,6 @@
 import { List, ListItemButton, ListItemIcon, Typography } from '@mui/material'
 import React from 'react'
-import { Building, CalendarDots, CurrencyCircleDollar, Images, Scroll, TreeStructure } from '@phosphor-icons/react';
+import { Building, CalendarDots, Scroll, TreeStructure } from '@phosphor-icons/react';
 import StatusWhatsapp from './StatusWhatsapp';
 import { Link } from 'react-router-dom';
 
