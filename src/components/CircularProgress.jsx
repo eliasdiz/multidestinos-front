@@ -76,7 +76,7 @@ export default function CircularWithValueLabel() {
         autExitoso()
         const timer = setInterval(() => {
         setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 1));
-        }, 600);
+        }, 700);
         return () => {
         clearInterval(timer);
         };
@@ -84,3 +84,5 @@ export default function CircularWithValueLabel() {
 
     return <CircularProgressWithLabel value={progress} />;
 }
+
+

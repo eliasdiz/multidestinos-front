@@ -26,7 +26,7 @@ export default function Login() {
     
     const generarQr = () => {
         socket.on('qrCode', (qr) =>{
-            console.log(qr)
+            // console.log(qr)
             setStep(2)
             setQrCode(qr)
         })

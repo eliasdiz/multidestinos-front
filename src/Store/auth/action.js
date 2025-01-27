@@ -7,7 +7,7 @@ const autSesion = createAsyncThunk(
     'autSesion',
     async () => {
         try {
-            let res = await axios.get(`${urlHost}/auth`)
+            let res = await axios.get(`${urlHost}whatsapp/auth`)
             return { status: res.data.status}
         } catch (error) {
             return { status: null}
