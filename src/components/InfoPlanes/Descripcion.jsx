@@ -6,22 +6,22 @@ import toast, { Toaster } from "react-hot-toast"
 import axios from "axios"
 import { urlHost } from '../../../url.js'
 import { useDispatch, useSelector } from "react-redux"
-import descripcionActions from '../../Store/Descripcion/actions.js'
+import planesActions from '../../Store/Planes/actions.js'
 
 
-const { getDescripcion } = descripcionActions
+const { getDescripcion } = planesActions
 
 export default function Descripcion() {
 
     const dispatch = useDispatch()
-    const desActual = useSelector(store => store.descripcion.descripcion)
+    const desActual = useSelector(store => store.planes.descripcion)
 const [ destino, setDestino ] = useState("")
 const [ descripcion, setDescripcion ] = useState("")
 
 console.log(desActual)
 
 const handleGuardar = () => {
-    if(destino === '' && desActual.destino === ''){
+    if(destino === ''){
         toast.error('debes ingresar un destino',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
     }else if(descripcion === '' && desActual.descripcion === ''){
         toast.error('desbes ingresar una descripcion',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
@@ -32,6 +32,7 @@ const handleGuardar = () => {
             descripcion: descripcion || desActual.descripcion
         }
         console.log(data)
+        // console.log(desActual)
         const promesa = axios.put(`${urlHost}plan/descripcion`,data)
         toast.promise(
             promesa,
@@ -42,7 +43,7 @@ const handleGuardar = () => {
                     return <>{res.data.message}</>
                 },
                 error: (error) => {
-                    return <>{error.data.response.message}</>
+                    return <>{error.response.data.message}</>
                 }
             },{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}}
         )
@@ -77,7 +78,7 @@ return (
                         sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
                         onChange={(e) => setDestino(e.target?.value)}
                         defaultValue={desActual?.destino}
-                        value={destino ? destino : desActual.destino}
+                        // value={destino !== '' ? destino : desActual?.destino}
                     />
                 </div>
 

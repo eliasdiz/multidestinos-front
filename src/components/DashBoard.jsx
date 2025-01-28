@@ -1,14 +1,15 @@
 import { Typography } from '@mui/material'
 import React, { useEffect } from 'react'
-import descripActions from '../Store/Descripcion/actions'
+import planesActions from '../Store/Planes/actions'
 import { useDispatch } from 'react-redux'
 
 
-const { getDescripcion } = descripActions
+const { getDescripcion } = planesActions
 
 export default function DashBoard() {
 
 	const dispatch = useDispatch()
+	
 
 	useEffect(
 		() => {
