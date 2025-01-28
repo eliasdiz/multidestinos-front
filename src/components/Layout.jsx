@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export default function Layout() {
     
     const linkList = [
-        { icon: TreeStructure , name: 'flujo del 🤖' },
+        { icon: TreeStructure , name: 'flujo del 🤖', ruta: '/cuchobot' },
         { icon: Scroll , name: 'descripcion', ruta: '/descripcion' },
         { icon: CalendarDots , name: 'fechas/precios', ruta: '/fecha' },
         { icon: Building , name: 'hospedaje',ruta: '/hospedaje' },
