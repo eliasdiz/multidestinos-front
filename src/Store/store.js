@@ -6,8 +6,8 @@ import planes from './Planes/reducer.js'
 
 
 export const store = configureStore({
-    reducer: {
-        autWhatsapp: autWhatsapp,
+        reducer: {
+                autWhatsapp: autWhatsapp,
         planes: planes
-    }
+}
 })

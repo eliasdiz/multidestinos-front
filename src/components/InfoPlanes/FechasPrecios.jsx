@@ -20,7 +20,7 @@ export default function FechasPrecios() {
     // console.log(fechasActuales)
 
     const handleGuardar = () => {
-        if(fechas === ''){
+        if(fechas === '' && fechasActuales !== ''){
             toast.error('debes ingresar fechas',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
         }else{
             let data = {
