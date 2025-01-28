@@ -9,14 +9,17 @@ import { useDispatch, useSelector } from "react-redux"
 import planesActions from '../../Store/Planes/actions.js'
 
 
+
 const { getDescripcion } = planesActions
+
+
 
 export default function Descripcion() {
 
     const dispatch = useDispatch()
     const desActual = useSelector(store => store.planes.descripcion)
-const [ destino, setDestino ] = useState("")
-const [ descripcion, setDescripcion ] = useState("")
+    const [ destino, setDestino ] = useState("")
+    const [ descripcion, setDescripcion ] = useState("")
 
 // console.log(desActual)
 
@@ -31,8 +34,6 @@ const handleGuardar = () => {
             destino: destino || desActual.destino,
             descripcion: descripcion || desActual.descripcion
         }
-        console.log(data)
-        // console.log(desActual)
         const promesa = axios.put(`${urlHost}plan/descripcion`,data)
         toast.promise(
             promesa,
@@ -78,7 +79,6 @@ return (
                         sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
                         onChange={(e) => setDestino(e.target?.value)}
                         defaultValue={desActual?.destino}
-                        // value={destino !== '' ? destino : desActual?.destino}
                     />
                 </div>
 
