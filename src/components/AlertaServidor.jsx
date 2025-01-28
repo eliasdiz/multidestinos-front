@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useSelector } from 'react-redux'
 import { CircularProgress, Dialog, Typography } from '@mui/material'
 
 
@@ -8,7 +8,7 @@ import { CircularProgress, Dialog, Typography } from '@mui/material'
 export default function AlertaServidor(){
 
     const [ open, setOpen ] = useState(true)
-    const destino = useSelector(store => store.descripcion.descripcion)
+    const destino = useSelector(store => store.planes.descripcion)
 
     const servidor = (destino) => destino.length === 0 ? setOpen(true) : setOpen(false)
 

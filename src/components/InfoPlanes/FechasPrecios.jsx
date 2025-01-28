@@ -1,19 +1,58 @@
 import { Textarea } from '@mui/joy'
 import { Button, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import planesActions from '../../Store/Planes/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
+import { urlHost } from '../../../url'
+import toast, { Toaster } from 'react-hot-toast'
+
+
+const { getFechas, getDescripcion  } = planesActions
+
 
 export default function FechasPrecios() {
     
+    const dispatch = useDispatch()
     const [ fechas, setFechas ] = useState('')
+    const fechasActuales = useSelector(store => store.planes.fechas.fechas)
+
+    // console.log(fechasActuales)
 
     const handleGuardar = () => {
-        let data = {
-            fechas: fechas
+        if(fechas === '' && fechasActuales !== ''){
+            toast.error('debes ingresar fechas',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
+        }else{
+            let data = {
+                fechas: fechas || fechasActuales
+            }
+            // console.log(data)
+            const promesa = axios.put(`${urlHost}plan/fecha`,data)
+            toast.promise(
+                promesa,
+                {
+                    loading: 'actualizando fechas',
+                    success: (res) => {
+                        dispatch(getFechas())
+                        return <>{res.data.message}</>
+                    },
+                    error: (error) => {
+                        console.log(error)
+                        return <>{error.response.data.message}</>
+                    }
+                },{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}}   
+            )
         }
-        console.log(data)
     }
 
 
+    useEffect(
+        () => {
+            dispatch(getFechas())
+            dispatch(getDescripcion())
+        },
+        []
+    )
 
     return (
         <div className="w-full min-h-screen bg-[#2A4364] flex items-center justify-center p-4">
@@ -34,6 +73,7 @@ export default function FechasPrecios() {
                         placeholder="Fechas y Precios"
                         sx={{backgroundColor:'#405674', border:'1px solid white', color:'white'}}
                         onChange={(e) => setFechas(e.target.value)}
+                        defaultValue={fechasActuales}
                     />
 
                     <Button
@@ -48,6 +88,7 @@ export default function FechasPrecios() {
                 </div>
 
             </div>
+            <Toaster position='top-right' />
         </div>
     )
 }
