@@ -6,6 +6,7 @@ import MainLayout from "../Layouts/MainLayout";
 import Descripcion from "../components/InfoPlanes/Descripcion";
 import Hospedaje from "../components/InfoPlanes/Hospedaje";
 import FechasPrecios from "../components/InfoPlanes/FechasPrecios";
+import CuchoBot from '../components/InfoPlanes/CuchoBot'
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { path:'/descripcion', element: <Descripcion />  },
             { path:'/hospedaje', element: <Hospedaje />  },
             { path:'/fecha', element: <FechasPrecios />  },
+            { path:'/cuchobot', element: <CuchoBot />  },
         ]
     }
 
