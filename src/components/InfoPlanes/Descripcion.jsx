@@ -73,23 +73,25 @@ return (
             <div className="w-[85%] flex flex-col gap-6 mb-5 ">
                 <div className="capitalize">
                     <Input
+                        size="lg"
                         variant="soft"
                         placeholder="Destino"
-                        className="p-3 capitalize "
                         sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
                         onChange={(e) => setDestino(e.target?.value)}
                         defaultValue={desActual?.destino}
                     />
                 </div>
 
-                <Textarea 
-                    variant="soft"
-                    className="h-[20rem] rounded-md"
-                    placeholder="Descripcion"
-                    sx={{backgroundColor:'#405674', border:'1px solid white', color:'white'}}
-                    onChange={(e) => setDescripcion(e.target?.value)}
-                    defaultValue={desActual?.descripcion}
-                />
+                <div className="max-h-[20rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder="Descripcion"
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setDescripcion(e.target?.value)}
+                        defaultValue={desActual?.descripcion}
+                    />
+                </div>
 
                 <Button
                     size="medium"
