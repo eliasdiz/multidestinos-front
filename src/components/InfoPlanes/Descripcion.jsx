@@ -19,6 +19,7 @@ export default function Descripcion() {
     const dispatch = useDispatch()
     const desActual = useSelector(store => store.planes.descripcion)
     const [ destino, setDestino ] = useState("")
+    const [ saludo, setSaludo ] = useState("")
     const [ descripcion, setDescripcion ] = useState("")
 
 // console.log(desActual)
@@ -26,15 +27,19 @@ export default function Descripcion() {
 const handleGuardar = () => {
     if(destino === '' && desActual.destino === ''){
         toast.error('debes ingresar un destino',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
+    }else if(saludo === '' && desActual.saludo === ''){
+
     }else if(descripcion === '' && desActual.descripcion === ''){
         toast.error('desbes ingresar una descripcion',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
     }
     else{
         let data = {
             destino: destino || desActual.destino,
+            saludo: saludo || desActual.saludo,
             descripcion: descripcion || desActual.descripcion
         }
-        const promesa = axios.put(`${urlHost}plan/descripcion`,data)
+        console.log(data)
+        const promesa = axios.put(`${urlHost}descripcion`,data)
         toast.promise(
             promesa,
             {
@@ -70,7 +75,7 @@ return (
                 </Typography>
             </div>
 
-            <div className="w-[85%] flex flex-col gap-6 mb-5 ">
+            <div className="w-[85%] flex flex-col gap-3 mb-5 ">
                 <div className="capitalize">
                     <Input
                         size="lg"
@@ -82,7 +87,18 @@ return (
                     />
                 </div>
 
-                <div className="max-h-[20rem] overflow-y-auto border rounded-md">
+                <div className="capitalize">
+                    <Input
+                        size="lg"
+                        variant="soft"
+                        placeholder="saludo"
+                        sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
+                        onChange={(e) => setSaludo(e.target?.value)}
+                        defaultValue={desActual?.saludo}
+                    />
+                </div>
+
+                <div className="max-h-[18rem] overflow-y-auto border rounded-md">
                     <Textarea
                         variant="soft"
                         className="rounded-md"

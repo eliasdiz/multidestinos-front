@@ -2,12 +2,12 @@ import { createReducer } from "@reduxjs/toolkit";
 import actions from "./actions";
 
 
-const { getDescripcion, getFechas } = actions
+const { getDescripcion, getOpciones } = actions
 
 
 const initialState = {
     descripcion: [],
-    fechas: []
+    opciones: []
 } 
 
 const reducer = createReducer(
@@ -24,11 +24,11 @@ const reducer = createReducer(
             }
         )
         .addCase(
-            getFechas.fulfilled,
+            getOpciones.fulfilled,
             (state,action) => {
                 let newState = {
                     ...state,
-                    fechas: action.payload.fechas
+                    opciones: action.payload.opciones
                 }
                 return newState
             }

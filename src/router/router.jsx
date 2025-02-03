@@ -4,8 +4,9 @@ import Login from "../components/Login";
 import DashBoard from "../components/DashBoard";
 import MainLayout from "../Layouts/MainLayout";
 import Descripcion from "../components/InfoPlanes/Descripcion";
-import Hospedaje from "../components/InfoPlanes/Hospedaje";
-import FechasPrecios from "../components/InfoPlanes/FechasPrecios";
+import Opcion1 from "../components/InfoPlanes/Opcion1";
+import Opcion2 from "../components/InfoPlanes/Opcion2";
+import Hospedaje from "../components/InfoPlanes/Opcion2";
 import CuchoBot from '../components/InfoPlanes/CuchoBot'
 
 
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
             { path:'/login', element: <Login />  },
             { path:'/dashboard', element: <DashBoard />  },
             { path:'/descripcion', element: <Descripcion />  },
-            { path:'/hospedaje', element: <Hospedaje />  },
-            { path:'/fecha', element: <FechasPrecios />  },
+            { path:'/opcion1', element: <Opcion1 />  },
+            { path:'/opcion2', element: <Opcion2 />  },
             { path:'/cuchobot', element: <CuchoBot />  },
         ]
     }

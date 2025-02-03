@@ -2,7 +2,7 @@ import { Textarea } from '@mui/joy'
 import { Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
-export default function Hospedaje() {
+export default function Opcion2() {
 
     const [ hospedaje, setHospedaje ] = useState("")
     
@@ -21,7 +21,7 @@ export default function Hospedaje() {
 
                 <div className="mt-5">
                     <Typography className="capitalize text-center" color="white" fontSize={35}>
-                        hospedaje
+                        opcion # 2
                     </Typography>
                 </div>
 

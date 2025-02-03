@@ -11,8 +11,8 @@ export default function Layout() {
     const linkList = [
         // { icon: TreeStructure , name: 'flujo del 🤖', ruta: '/cuchobot' },
         { icon: Scroll , name: 'descripcion', ruta: '/descripcion' },
-        { icon: NumberSquareOne , name: 'opcion', ruta: '/fecha' },
-        { icon: NumberSquareTwo , name: 'opcion',ruta: '/hospedaje' },
+        { icon: NumberSquareOne , name: 'opcion', ruta: '/opcion1' },
+        { icon: NumberSquareTwo , name: 'opcion',ruta: '/opcion2' },
         { icon: NumberSquareThree , name: 'opcion',ruta: '/hospedaje' },
         { icon: NumberSquareFour , name: 'opcion',ruta: '/hospedaje' },
         { icon: NumberSquareFive , name: 'opcion',ruta: '/hospedaje' },
