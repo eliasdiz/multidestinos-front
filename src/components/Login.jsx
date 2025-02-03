@@ -5,13 +5,17 @@ import { motion } from 'framer-motion'
 import { io } from 'socket.io-client'
 import { Skeleton, } from '@mui/material'
 import CircularProgress from '../components/CircularProgress' 
+import descripcionActions from '../Store/Planes/actions'
+import { useDispatch } from 'react-redux'
 
 
+const { getDescripcion } = descripcionActions
 const socket = io('http://localhost:8080')
 
 
 export default function Login() {
 
+    const dispatch = useDispatch()
     const [ step, setStep ] = useState(0)
     const [ qrCode, setQrCode ] = useState(null)
     const [ ready, setReady ] = useState(false)
@@ -41,6 +45,7 @@ export default function Login() {
 
     useEffect(
         () => {
+            dispatch(getDescripcion())
             generarQr()
             autenticando()
         },

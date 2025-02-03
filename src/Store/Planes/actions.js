@@ -7,7 +7,7 @@ const getDescripcion = createAsyncThunk(
     'getDescripcion',
     async() => {
         try {
-            let res = await axios.get(`${urlHost}plan/descripcion`)
+            let res = await axios.get(`${urlHost}descripcion`)
             return { descripcion: res.data.descripcion}
         } catch (error) {
             return { descripcion: []}
@@ -15,18 +15,18 @@ const getDescripcion = createAsyncThunk(
     }
 )
 
-const getFechas = createAsyncThunk(
-    'getFechas',
+const getOpciones = createAsyncThunk(
+    'getOpciones',
     async() => {
         try {
-            let res = await axios.get(`${urlHost}plan/fecha`)
-            return { fechas: res.data.fechas}
+            let res = await axios.get(`${urlHost}opcion`)
+            return { opciones: res.data.opciones}
         } catch (error) {
-            return { fechas: []}
+            return { opciones: []}
         }
     }
 )
 
-const actions = { getDescripcion, getFechas}
+const actions = { getDescripcion, getOpciones}
 
 export default actions
