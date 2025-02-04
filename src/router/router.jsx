@@ -6,7 +6,6 @@ import MainLayout from "../Layouts/MainLayout";
 import Descripcion from "../components/InfoPlanes/Descripcion";
 import Opcion1 from "../components/InfoPlanes/Opcion1";
 import Opcion2 from "../components/InfoPlanes/Opcion2";
-import Hospedaje from "../components/InfoPlanes/Opcion2";
 import CuchoBot from '../components/InfoPlanes/CuchoBot'
 
 

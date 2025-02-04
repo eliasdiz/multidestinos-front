@@ -6,6 +6,7 @@ import axios from 'axios'
 import { urlHost } from '../../../url'
 import toast, { Toaster } from 'react-hot-toast'
 import TextArea from '../TexArea'
+import MediaArea from '../MediaArea'
 
 
 const { getDescripcion,getOpciones  } = planesActions
@@ -16,17 +17,27 @@ export default function Opcion1() {
     const dispatch = useDispatch()
     const [ tipoRespuesta, setTipoRespuesta ] = useState('')
     const [ respuesta, setRespuesta] = useState('')
-    const opciones = useSelector(store => store.planes.opciones[0].opciones)
+    const opciones = useSelector(store => store.planes?.opciones[0]?.opciones)
     const opcion = opciones?.find(({opcion}) => opcion === '1')
-    // console.log(opcion)
+    const [ files, setFiles ] = useState([])
+    const urls = files?.map(({url}) => url)
+    
+    // console.log(urls)
+    // console.log(opcion?.respuesta)
+
+
+    const handleFileChange = (newFiles) => {
+        setFiles(newFiles)
+    };
 
     const handleGuardar = () => {
         let data = {
             opcion: '1',
             tipoRespuesta: tipoRespuesta,
-            respuesta: respuesta || opcion?.respuesta
+            respuesta: tipoRespuesta === 'texto' ? respuesta || opcion?.respuesta : urls
         }
         console.log(data)
+
         if(!data.tipoRespuesta){
             toast.error('debes seleccionar un tipo de respuesta',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
         }else{
@@ -103,16 +114,37 @@ export default function Opcion1() {
                                 value={respuesta} 
                                 onChange={(e) => setRespuesta(e.target.value)} 
                             />
-                            :
-                            null
+                        : tipoRespuesta === 'multimedia' ?
+                            <MediaArea onFileChange={handleFileChange} />
+                        : null
                     }
-
+                    
+                    {
+                        tipoRespuesta === 'multimedia' && files.length === 0 && opcion?.respuesta[0].startsWith('https://firebasestorage') &&
+                            <div className='max-h-[15rem] flex flex-wrap justify-center overflow-y-auto p-2 gap-4'>
+                                {
+                                    opcion?.respuesta.map((url,i) => (
+                                        <div
+                                            key={i}
+                                            className="relative h-[10rem] w-[8rem] flex-shrink-0 group"
+                                        >
+                                            <img
+                                                src={url}
+                                                alt={'imagen'}
+                                                className="object-cover rounded-lg w-full h-full"
+                                            />
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                    }
                     <Button
                         className='w-[80%]'
                         size="medium"
                         variant="contained"
                         color="primary"
                         onClick={handleGuardar}
+                        disabled={tipoRespuesta === 'multimedia' && !files[0]?.url}
                     >
                         guardar opcion # 1
                     </Button>
