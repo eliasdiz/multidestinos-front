@@ -77,7 +77,7 @@ export default function MediaArea({ onFileChange }) {
             },
             async () => {
                 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                console.log("Imagen subida con éxito: ", downloadURL);
+                // console.log("Imagen subida con éxito: ", downloadURL);
 
                 setUploadingFiles((prev) => prev.filter((name) => name !== file.name));
 
@@ -108,16 +108,15 @@ export default function MediaArea({ onFileChange }) {
             const result = await listAll(folderRef);
             const deletePromises = result.items.map((fileRef) => deleteObject(fileRef));
             await Promise.all(deletePromises);
-            console.log("Todas las imágenes han sido eliminadas.");
+            // console.log("Todas las imágenes han sido eliminadas.");
         } catch (error) {
             console.error("Error eliminando imágenes:", error);
         }
     };
 
     const handleUpload = async () => {
-        // const folderPath = 'https://firebasestorage.googleapis.com/v0/b/multidestinos-chatbot.firebasestorage.app/o/images/'
         const folderPath = 'gs://multidestinos-chatbot.firebasestorage.app/images'
-        await deleteAllImages(folderPath)
+        // await deleteAllImages(folderPath)
         files.forEach((file) => {
             uploadImageToFirebase(file)
         })
