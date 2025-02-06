@@ -7,10 +7,11 @@ import { io } from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 import autWhatsappActions from '../Store/auth/action.js'
 import { useDispatch } from 'react-redux';
+import { urlHost } from '../../url.js';
 
 
 const { autSesion } = autWhatsappActions
-const socket = io('http://localhost:8080')
+const socket = io(urlHost)
 
 
 function CircularProgressWithLabel(props) {

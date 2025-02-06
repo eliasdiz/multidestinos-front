@@ -41,7 +41,7 @@ export default function Opcion3() {
         if(!data.tipoRespuesta){
             toast.error('debes seleccionar un tipo de respuesta',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
         }else{
-            const promesa = axios.post(`${urlHost}opcion`,data)
+            const promesa = axios.post(`${urlHost}/opcion`,data)
             toast.promise(
                 promesa,
                 {
