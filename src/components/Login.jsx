@@ -7,10 +7,11 @@ import { Skeleton, } from '@mui/material'
 import CircularProgress from '../components/CircularProgress' 
 import descripcionActions from '../Store/Planes/actions'
 import { useDispatch } from 'react-redux'
+import { urlHost } from '../../url'
 
 
 const { getDescripcion } = descripcionActions
-const socket = io('http://localhost:8080')
+const socket = io(urlHost)
 
 
 export default function Login() {

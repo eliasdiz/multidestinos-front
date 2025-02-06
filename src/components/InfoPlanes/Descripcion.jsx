@@ -39,7 +39,7 @@ const handleGuardar = () => {
             descripcion: descripcion || desActual.descripcion
         }
         console.log(data)
-        const promesa = axios.put(`${urlHost}descripcion`,data)
+        const promesa = axios.put(`${urlHost}/descripcion`,data)
         toast.promise(
             promesa,
             {

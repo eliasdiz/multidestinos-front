@@ -31,7 +31,7 @@ export default function Ayuda() {
         if(numeroAsesor === ''){
             toast.error('debes ingresar el numero del asesor',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
         }else{
-            const promesa = axios.put(`${urlHost}ayuda`,data)
+            const promesa = axios.put(`${urlHost}/ayuda`,data)
             toast.promise(
                 promesa,
                 {

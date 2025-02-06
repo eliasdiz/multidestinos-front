@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import planesActions from '../Store/Planes/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const { getDescripcion } = planesActions
@@ -9,7 +9,7 @@ const { getDescripcion } = planesActions
 export default function DashBoard() {
 
 	const dispatch = useDispatch()
-	
+	console.log( useSelector(store => store))
 
 	useEffect(
 		() => {
