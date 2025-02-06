@@ -9,14 +9,13 @@ import { Link } from 'react-router-dom';
 export default function Layout() {
     
     const linkList = [
-        // { icon: TreeStructure , name: 'flujo del 🤖', ruta: '/cuchobot' },
         { icon: Scroll , name: 'descripcion', ruta: '/descripcion' },
         { icon: NumberSquareOne , name: 'opcion', ruta: '/opcion1' },
         { icon: NumberSquareTwo , name: 'opcion',ruta: '/opcion2' },
-        { icon: NumberSquareThree , name: 'opcion',ruta: '/hospedaje' },
-        { icon: NumberSquareFour , name: 'opcion',ruta: '/hospedaje' },
-        { icon: NumberSquareFive , name: 'opcion',ruta: '/hospedaje' },
-        { icon: Info , name: 'ayuda',ruta: '/hospedaje' },
+        { icon: NumberSquareThree , name: 'opcion',ruta: '/opcion3' },
+        { icon: NumberSquareFour , name: 'opcion',ruta: '/opcion4' },
+        { icon: NumberSquareFive , name: 'opcion',ruta: '/opcion5' },
+        { icon: Info , name: 'ayuda',ruta: '/ayuda' },
     ]
 
     const renderMenuItems = (items) => {

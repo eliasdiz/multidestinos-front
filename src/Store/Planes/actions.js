@@ -27,6 +27,18 @@ const getOpciones = createAsyncThunk(
     }
 )
 
-const actions = { getDescripcion, getOpciones}
+const getAyuda = createAsyncThunk(
+    'getAyuda',
+    async() => {
+        try {
+            let res = await axios.get(`${urlHost}ayuda`)
+            return { ayuda: res.data.ayuda}
+        } catch (error) {
+            return { ayuda: []}
+        }
+    }
+)
+
+const actions = { getDescripcion, getOpciones, getAyuda}
 
 export default actions

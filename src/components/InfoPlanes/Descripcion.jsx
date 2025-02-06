@@ -76,27 +76,23 @@ return (
             </div>
 
             <div className="w-[85%] flex flex-col gap-3 mb-5 ">
-                <div className="capitalize">
-                    <Input
-                        size="lg"
-                        variant="soft"
-                        placeholder="Destino"
-                        sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
-                        onChange={(e) => setDestino(e.target?.value)}
-                        defaultValue={desActual?.destino}
-                    />
-                </div>
+                <Input
+                    size="lg"
+                    variant="soft"
+                    placeholder="Destino"
+                    sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
+                    onChange={(e) => setDestino(e.target?.value)}
+                    defaultValue={desActual?.destino}
+                />
 
-                <div className="capitalize">
-                    <Input
-                        size="lg"
-                        variant="soft"
-                        placeholder="saludo"
-                        sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
-                        onChange={(e) => setSaludo(e.target?.value)}
-                        defaultValue={desActual?.saludo}
-                    />
-                </div>
+                <Input
+                    size="lg"
+                    variant="soft"
+                    placeholder="saludo"
+                    sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
+                    onChange={(e) => setSaludo(e.target?.value)}
+                    defaultValue={desActual?.saludo}
+                />
 
                 <div className="max-h-[18rem] overflow-y-auto border rounded-md">
                     <Textarea

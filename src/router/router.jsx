@@ -6,7 +6,10 @@ import MainLayout from "../Layouts/MainLayout";
 import Descripcion from "../components/InfoPlanes/Descripcion";
 import Opcion1 from "../components/InfoPlanes/Opcion1";
 import Opcion2 from "../components/InfoPlanes/Opcion2";
-import CuchoBot from '../components/InfoPlanes/CuchoBot'
+import Opcion3 from "../components/InfoPlanes/Opcion3";
+import Opcion4 from "../components/InfoPlanes/Opcion4";
+import Opcion5 from "../components/InfoPlanes/Opcion5";
+import Ayuda from "../components/InfoPlanes/Ayuda";
 
 
 const router = createBrowserRouter([
@@ -20,7 +23,10 @@ const router = createBrowserRouter([
             { path:'/descripcion', element: <Descripcion />  },
             { path:'/opcion1', element: <Opcion1 />  },
             { path:'/opcion2', element: <Opcion2 />  },
-            { path:'/cuchobot', element: <CuchoBot />  },
+            { path:'/opcion3', element: <Opcion3 />  },
+            { path:'/opcion4', element: <Opcion4 />  },
+            { path:'/opcion5', element: <Opcion5 />  },
+            { path:'/ayuda', element: <Ayuda />  },
         ]
     }
 
