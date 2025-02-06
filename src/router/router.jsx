@@ -9,6 +9,7 @@ import Opcion2 from "../components/InfoPlanes/Opcion2";
 import Opcion3 from "../components/InfoPlanes/Opcion3";
 import Opcion4 from "../components/InfoPlanes/Opcion4";
 import Opcion5 from "../components/InfoPlanes/Opcion5";
+import Ayuda from "../components/InfoPlanes/Ayuda";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
             { path:'/opcion3', element: <Opcion3 />  },
             { path:'/opcion4', element: <Opcion4 />  },
             { path:'/opcion5', element: <Opcion5 />  },
+            { path:'/ayuda', element: <Ayuda />  },
         ]
     }
 

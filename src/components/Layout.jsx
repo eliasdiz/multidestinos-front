@@ -15,7 +15,7 @@ export default function Layout() {
         { icon: NumberSquareThree , name: 'opcion',ruta: '/opcion3' },
         { icon: NumberSquareFour , name: 'opcion',ruta: '/opcion4' },
         { icon: NumberSquareFive , name: 'opcion',ruta: '/opcion5' },
-        { icon: Info , name: 'ayuda',ruta: '/hospedaje' },
+        { icon: Info , name: 'ayuda',ruta: '/ayuda' },
     ]
 
     const renderMenuItems = (items) => {
