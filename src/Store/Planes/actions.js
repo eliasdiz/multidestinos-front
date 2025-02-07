@@ -8,7 +8,7 @@ const getDescripcion = createAsyncThunk(
     async() => {
         try {
             let res = await axios.get(`${urlHost}/descripcion`)
-            console.log(res)
+            // console.log(res)
             return { descripcion: res.data.descripcion}
         } catch (error) {
             return { descripcion: []}
