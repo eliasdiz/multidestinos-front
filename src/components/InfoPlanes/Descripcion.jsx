@@ -20,41 +20,41 @@ export default function Descripcion() {
     const desActual = useSelector(store => store.planes.descripcion)
     const [ destino, setDestino ] = useState("")
     const [ saludo, setSaludo ] = useState("")
-    const [ descripcion, setDescripcion ] = useState("")
+    const [ mensaje1, setMensaje1 ] = useState("")
+    const [ mensaje2, setMensaje2 ] = useState("")
+    const [ mensaje3, setMensaje3 ] = useState("")
+    const [ menu, setMenu ] = useState("")
+    const [ mensaje4, setMensaje4 ] = useState("")
 
-// console.log(desActual)
+
 
 const handleGuardar = () => {
-    if(destino === '' && desActual.destino === ''){
-        toast.error('debes ingresar un destino',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
-    }else if(saludo === '' && desActual.saludo === ''){
-
-    }else if(descripcion === '' && desActual.descripcion === ''){
-        toast.error('desbes ingresar una descripcion',{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}})
+    let data = {
+        destino: destino || desActual.destino,
+        saludo: saludo || desActual.saludo,
+        mensaje1: mensaje1 || desActual.mensaje1,
+        mensaje2: mensaje2 || desActual.mensaje2,
+        mensaje3: mensaje3 || desActual.mensaje3,
+        menu: menu || desActual.menu,
+        mensaje4: mensaje4 || desActual.mensaje4
     }
-    else{
-        let data = {
-            destino: destino || desActual.destino,
-            saludo: saludo || desActual.saludo,
-            descripcion: descripcion || desActual.descripcion
-        }
-        console.log(data)
-        const promesa = axios.put(`${urlHost}/descripcion`,data)
-        toast.promise(
-            promesa,
-            {
-                loading: 'actualizando descripcion',
-                success: (res) => {
-                    dispatch(getDescripcion())
-                    return <>{res.data.message}</>
-                },
-                error: (error) => {
-                    return <>{error.response.data.message}</>
-                }
-            },{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}}
-        )
-    }
+    // console.log(data)
+    const promesa = axios.put(`${urlHost}/descripcion`,data)
+    toast.promise(
+        promesa,
+        {
+            loading: 'actualizando descripcion',
+            success: (res) => {
+                dispatch(getDescripcion())
+                return <>{res.data.message}</>
+            },
+            error: (error) => {
+                return <>{error.response.data.message}</>
+            }
+        },{style:{backgroundColor:'#385e86e3',textTransform:'capitalize',color:'white'}}
+    )
 }
+
 
 
 useEffect(
@@ -65,11 +65,11 @@ useEffect(
 )
 
 return (
-    <div className="w-full min-h-screen bg-[#2A4364] flex items-center justify-center p-4">
+    <div className="w-full h-[100vh] bg-[#2A4364] flex items-center justify-center">
 
-        <div className="w-[70%] flex flex-col items-center gap-5 rounded-md bg-[#405674]">
+        <div className="h-[95%] w-[70%] flex flex-col items-center rounded-md bg-[#405674]">
 
-            <div className="mt-5">
+            <div className="mt-2">
                 <Typography className="capitalize text-center" color="white" fontSize={35}>
                     descripcion destino
                 </Typography>
@@ -79,31 +79,74 @@ return (
                 <Input
                     size="lg"
                     variant="soft"
-                    placeholder="Destino"
+                    placeholder={desActual?.destino !== '' ? desActual?.destino : 'Destino'}
                     sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
                     onChange={(e) => setDestino(e.target?.value)}
-                    defaultValue={desActual?.destino}
+                    value={destino}
                 />
 
-                <Input
-                    size="lg"
-                    variant="soft"
-                    placeholder="saludo"
-                    sx={{backgroundColor:'#405674', color:'white', border:'1px solid white'}}
-                    onChange={(e) => setSaludo(e.target?.value)}
-                    defaultValue={desActual?.saludo}
-                />
-
-                <div className="max-h-[18rem] overflow-y-auto border rounded-md">
+                <div className="max-h-[4rem] overflow-y-auto border rounded-md">
                     <Textarea
                         variant="soft"
                         className="rounded-md"
-                        placeholder="Descripcion"
+                        placeholder={desActual?.saludo !== '' ? desActual?.saludo : 'Saludo'}
                         sx={{backgroundColor:'#405674', color:'white'}}
-                        onChange={(e) => setDescripcion(e.target?.value)}
-                        defaultValue={desActual?.descripcion}
+                        onChange={(e) => setSaludo(e.target?.value)}
+                        
                     />
                 </div>
+
+                <div className="max-h-[4rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder={desActual?.mensaje1 !== '' ? desActual?.mensaje1 : 'Mensaje # 1'}
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setMensaje1(e.target?.value)}
+                    />
+                </div>
+
+                <div className="max-h-[4rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder={desActual?.mensaje2 !== '' ? desActual?.mensaje2 : 'Mensaje # 2'}
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setMensaje2(e.target?.value)}
+                    />
+                </div>
+
+                <div className="max-h-[4rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder={desActual?.mensaje3 !== '' ? desActual?.mensaje3 : 'Mensaje # 3'}
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setMensaje3(e.target?.value)}
+                    />
+                </div>
+
+                <div className="max-h-[9rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder={desActual?.menu !== '' ? desActual?.menu : 'Menu'}
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setMenu(e.target?.value)}
+                    />
+                </div>
+
+                <div className="max-h-[4rem] overflow-y-auto border rounded-md">
+                    <Textarea
+                        variant="soft"
+                        className="rounded-md"
+                        placeholder={desActual?.mensaje4 !== '' ? desActual?.mensaje4 : 'Mensaje # 4'}
+                        sx={{backgroundColor:'#405674', color:'white'}}
+                        onChange={(e) => setMensaje4(e.target?.value)}
+                    />
+                </div>
+
+                
 
                 <Button
                     size="medium"

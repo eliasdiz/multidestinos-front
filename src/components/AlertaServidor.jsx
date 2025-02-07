@@ -11,7 +11,7 @@ export default function AlertaServidor(){
     const destino = useSelector(store => store.planes.descripcion)
     const servidor = (destino) => destino.length === 0 ? setOpen(true) : setOpen(false)
 
-    console.log(destino)
+    // console.log(destino)
 
     useEffect(
         () => {
