@@ -26,7 +26,7 @@ export default function Login() {
     const handleClick = () => {
         setStep(1)
         socket.emit('generateQr')
-        socket.off('generateQr')
+        // socket.off('generateQr')
     }
     
     const generarQr = () => {
